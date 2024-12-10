@@ -85,7 +85,15 @@ class QuizActivity : AppCompatActivity() {
     private fun fetchChapters() {
         lifecycleScope.launch {
             try {
+                val completedChapters = UserPreference.getInstance(applicationContext.dataStore).getCompletedChapters().first()
                 viewModel.fetchChapters()
+
+                viewModel.chapters.observe(this@QuizActivity) { chapters ->
+                    chapters.forEach { chapter ->
+                        chapter.isCompleted = completedChapters.contains(chapter.id.toString())
+                    }
+                    (binding?.recyclerViewQuiz?.adapter as ChapterAdapter).submitList(chapters)
+                }
             } catch (e: Exception) {
                 Toast.makeText(this@QuizActivity, "Failed to fetch chapters", Toast.LENGTH_SHORT).show()
             }

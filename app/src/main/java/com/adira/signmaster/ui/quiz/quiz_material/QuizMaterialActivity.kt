@@ -9,13 +9,17 @@ import android.widget.Toast
 import android.widget.VideoView
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
 import com.adira.signmaster.R
 import com.adira.signmaster.data.model.Quiz
+import com.adira.signmaster.data.pref.UserPreference
+import com.adira.signmaster.data.pref.dataStore
 import com.adira.signmaster.databinding.ActivityQuizMaterialBinding
 import com.adira.signmaster.ui.quiz.QuizViewModel
 import com.adira.signmaster.ui.quiz.quiz_result.QuizResultFragment
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
+import kotlinx.coroutines.launch
 
 class QuizMaterialActivity : AppCompatActivity() {
 
@@ -198,6 +202,13 @@ class QuizMaterialActivity : AppCompatActivity() {
         binding.btn3.visibility = View.GONE
         binding.btn4.visibility = View.GONE
         binding.fabRepeatQuiz.visibility = View.GONE
+
+        val chapterId = intent.getIntExtra(EXTRA_CHAPTER_ID, -1)
+
+        lifecycleScope.launch {
+            val pref = UserPreference.getInstance(applicationContext.dataStore)
+            pref.markChapterAsCompleted(chapterId)
+        }
 
         val fragment = QuizResultFragment.newInstance(quizList, correctAnswersCount)
         supportFragmentManager.beginTransaction()

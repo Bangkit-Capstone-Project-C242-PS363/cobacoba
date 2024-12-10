@@ -14,6 +14,15 @@ val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "se
 
 class UserPreference private constructor(private val dataStore: DataStore<Preferences>) {
 
+    private val COMPLETED_CHAPTERS_KEY = stringPreferencesKey("completed_chapters")
+
+
+    fun getCompletedChapters(): Flow<Set<String>> {
+        return dataStore.data.map { preferences ->
+            preferences[COMPLETED_CHAPTERS_KEY]?.split(",")?.toSet() ?: emptySet()
+        }
+    }
+
     fun getUsername(): Flow<String> {
         return dataStore.data.map { preferences ->
             preferences[USERNAME] ?: ""
@@ -23,6 +32,14 @@ class UserPreference private constructor(private val dataStore: DataStore<Prefer
     fun getEmail(): Flow<String> {
         return dataStore.data.map { preferences ->
             preferences[EMAIL] ?: ""
+        }
+    }
+
+    suspend fun markChapterAsCompleted(chapterId: Int) {
+        dataStore.edit { preferences ->
+            val currentChapters = preferences[COMPLETED_CHAPTERS_KEY]?.split(",")?.toMutableSet() ?: mutableSetOf()
+            currentChapters.add(chapterId.toString())
+            preferences[COMPLETED_CHAPTERS_KEY] = currentChapters.joinToString(",")
         }
     }
 

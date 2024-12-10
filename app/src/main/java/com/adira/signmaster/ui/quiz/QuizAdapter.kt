@@ -46,6 +46,8 @@ class ChapterAdapter(
         private val icon: ImageView = itemView.findViewById(R.id.ivIconQuizCard)
         private val lockIcon: ImageView = itemView.findViewById(R.id.ivLockIcon)
         private val background: ImageView = itemView.findViewById(R.id.ivCardBackground)
+        private val completedIndicator: TextView = itemView.findViewById(R.id.tvCompleted1)
+
 
         fun bind(chapter: Chapter) {
             title.text = chapter.title
@@ -66,6 +68,14 @@ class ChapterAdapter(
                 icon.alpha = 1.0f
                 background.alpha = 1.0f
             }
+
+            // Tampilkan indikator selesai jika quiz sudah selesai
+            if (chapter.isCompleted) {
+                completedIndicator.visibility = View.VISIBLE
+            } else {
+                completedIndicator.visibility = View.GONE
+            }
+
 
             itemView.setOnClickListener {
                 val animation = AnimationUtils.loadAnimation(itemView.context, R.anim.scale_animation)
