@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_gravity="center"
+    tools:context=".ui.login.LoginActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/ivLogo"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:src="@drawable/signmastericon"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/emailInputLayout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="27dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="27dp"
+            android:alpha="0"
+            tools:alpha="100"
+            app:startIconDrawable="@drawable/baseline_email_24"
+            app:layout_constraintTop_toBottomOf="@+id/ivLogo">
+
+            <com.adira.signmaster.ui.custom_view.MyEmailEditText
+                android:id="@+id/emailInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_input_text"
+                android:inputType="textEmailAddress"
+                android:ems="10"
+                android:padding="16dp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/passwordInputLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_marginStart="27dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="27dp"
+            android:alpha="0"
+            tools:alpha="100"
+            app:startIconDrawable="@drawable/baseline_lock_24"
+            app:layout_constraintTop_toBottomOf="@+id/emailInputLayout">
+
+            <com.adira.signmaster.ui.custom_view.MyPasswordEditText
+                android:id="@+id/passwordInput"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:ems="10"
+                android:background="@drawable/bg_input_text"
+                android:inputType="textPassword"
+                android:padding="16dp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/btnLogin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="27dp"
+            android:layout_marginTop="36dp"
+            android:layout_marginEnd="27dp"
+            android:fontFamily="@font/poppins_bold"
+            android:padding="8dp"
+            android:elevation="8dp"
+            android:text="@string/login"
+            android:alpha="0"
+            tools:alpha="100"
+            android:textColor="@color/dark_blue"
+            android:textSize="16sp"
+            android:background="@drawable/btn_yellow_bg"
+            app:layout_constraintTop_toBottomOf="@+id/passwordInputLayout" />
+
+        <TextView
+            android:id="@+id/navigateToRegister"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:fontFamily="@font/poppins_medium"
+            android:alpha="0"
+            tools:alpha="100"
+            android:text="@string/dont_have_acc"
+            android:textColor="@color/dark_blue"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="@+id/btnLogin"
+            app:layout_constraintStart_toStartOf="@+id/btnLogin"
+            app:layout_constraintTop_toBottomOf="@+id/btnLogin" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

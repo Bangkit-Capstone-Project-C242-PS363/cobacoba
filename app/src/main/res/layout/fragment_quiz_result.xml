@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:id="@+id/rootQuizResult"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/orange"
+    tools:context=".ui.quiz.quiz_result.QuizResultFragment">
+
+
+    <ImageView
+        android:id="@+id/ivIconFinish"
+        android:layout_width="180dp"
+        android:layout_height="180dp"
+        android:layout_marginTop="164dp"
+        android:src="@drawable/icon_flag"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/ivBackgroundResult"
+        android:layout_width="240dp"
+        android:layout_height="240dp"
+        android:layout_marginTop="18dp"
+        android:src="@drawable/quiz_button_background"
+        app:layout_constraintEnd_toEndOf="@+id/ivIconFinish"
+        app:layout_constraintStart_toStartOf="@+id/ivIconFinish"
+        app:layout_constraintTop_toBottomOf="@+id/ivIconFinish" />
+
+    <Button
+        android:visibility="visible"
+        android:id="@+id/btnExitQuiz"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:background="@drawable/quiz_button_background"
+        android:elevation="10dp"
+        android:fontFamily="@font/poppins_bold"
+        android:gravity="center"
+        android:padding="8dp"
+        android:text="@string/exit"
+        android:textColor="@color/dark_blue"
+        android:textSize="18sp"
+        android:layout_marginBottom="24dp"
+        app:layout_constraintBottom_toBottomOf="@+id/ivBackgroundResult"
+        app:layout_constraintEnd_toEndOf="@+id/ivBackgroundResult"
+        app:layout_constraintStart_toStartOf="@+id/ivBackgroundResult" />
+
+    <TextView
+        android:id="@+id/tvCompleted"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:fontFamily="@font/poppins_bold"
+        android:textColor="@color/dark_blue"
+        android:textSize="28sp"
+        android:text="@string/completed"
+        app:layout_constraintEnd_toEndOf="@+id/ivBackgroundResult"
+        app:layout_constraintStart_toStartOf="@+id/ivBackgroundResult"
+        app:layout_constraintTop_toTopOf="@+id/ivBackgroundResult" />
+
+    <TextView
+        android:id="@+id/tvQuizResult"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_bold"
+        android:text="@string/quiz_result_percentage"
+        android:textColor="@color/orange"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toTopOf="@+id/btnExitQuiz"
+        app:layout_constraintEnd_toEndOf="@+id/tvCompleted"
+        app:layout_constraintStart_toStartOf="@+id/tvCompleted"
+        app:layout_constraintTop_toBottomOf="@+id/tvCompleted" />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.home.HomeFragment">
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipeRefreshLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraintLayout"
+                android:layout_width="match_parent"
+                android:layout_height="260dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:id="@+id/imageView"
+                    android:layout_width="match_parent"
+                    android:layout_height="180dp"
+                    android:src="@drawable/top_base"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/textWelcome"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginTop="40dp"
+                    android:fontFamily="@font/poppins_bold"
+                    android:text="@string/welcome"
+                    android:textColor="@color/dark_blue"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/textUserName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_bold"
+                    android:text="@string/username"
+                    android:textColor="@color/dark_blue"
+                    android:textSize="25sp"
+                    app:layout_constraintStart_toStartOf="@+id/textWelcome"
+                    app:layout_constraintTop_toBottomOf="@+id/textWelcome" />
+
+                <ImageView
+                    android:id="@+id/ivVip"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="8dp"
+                    android:src="@drawable/vip_icon"
+                    app:layout_constraintBottom_toBottomOf="@+id/textUserName"
+                    app:layout_constraintStart_toEndOf="@+id/textUserName"
+                    app:layout_constraintTop_toTopOf="@+id/textUserName" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clipChildren="false"
+                    android:clipToPadding="false"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:padding="8dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/imageView"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/imageView">
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/cardTranslate"
+                        android:layout_width="80dp"
+                        android:layout_height="100dp"
+                        android:layout_gravity="center"
+                        android:layout_marginEnd="12dp"
+                        android:clickable="true"
+                        android:elevation="10dp"
+                        android:focusable="true"
+                        android:foreground="?attr/selectableItemBackgroundBorderless"
+                        app:cardBackgroundColor="@color/white"
+                        app:cardCornerRadius="8dp">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <ImageView
+                                android:id="@+id/ivIconSign"
+                                android:layout_width="60dp"
+                                android:layout_height="60dp"
+                                android:layout_marginTop="8dp"
+                                android:src="@drawable/circle_background"
+                                app:layout_constraintEnd_toEndOf="@+id/iconSignLanguage"
+                                app:layout_constraintStart_toStartOf="@+id/iconSignLanguage"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <ImageView
+                                android:id="@+id/iconSignLanguage"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:layout_gravity="center"
+                                android:layout_margin="8dp"
+                                android:src="@drawable/sign_language_icon"
+                                app:layout_constraintBottom_toBottomOf="@+id/ivIconSign"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="@+id/ivIconSign" />
+
+                            <TextView
+                                android:id="@+id/textTranslate"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/poppins_regular"
+                                android:text="@string/translate"
+                                android:textAlignment="center"
+                                android:textColor="@color/dark_blue"
+                                android:textSize="12sp"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/ivIconSign" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/cardStudy"
+                        android:layout_width="80dp"
+                        android:layout_height="100dp"
+                        android:layout_gravity="center"
+                        android:layout_marginEnd="12dp"
+                        android:clickable="true"
+                        android:elevation="10dp"
+                        android:focusable="true"
+                        android:foreground="?attr/selectableItemBackgroundBorderless"
+                        app:cardBackgroundColor="@color/white"
+                        app:cardCornerRadius="8dp">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <ImageView
+                                android:id="@+id/ivIconStudy"
+                                android:layout_width="60dp"
+                                android:layout_height="60dp"
+                                android:layout_marginTop="8dp"
+                                android:src="@drawable/circle_background"
+                                app:layout_constraintEnd_toEndOf="@+id/iconStudy"
+                                app:layout_constraintStart_toStartOf="@+id/iconStudy"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <ImageView
+                                android:id="@+id/iconStudy"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:layout_gravity="center"
+                                android:layout_margin="8dp"
+                                android:src="@drawable/study_icon"
+                                app:layout_constraintBottom_toBottomOf="@+id/ivIconStudy"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="@+id/ivIconStudy" />
+
+                            <TextView
+                                android:id="@+id/textStudy"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/poppins_regular"
+                                android:text="@string/study"
+                                android:textAlignment="center"
+                                android:textColor="@color/dark_blue"
+                                android:textSize="12sp"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/ivIconStudy" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </androidx.cardview.widget.CardView>
+
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/cardQuiz"
+                        android:layout_width="80dp"
+                        android:layout_height="100dp"
+                        android:layout_gravity="center"
+                        android:clickable="true"
+                        android:elevation="10dp"
+                        android:focusable="true"
+                        android:foreground="?attr/selectableItemBackgroundBorderless"
+                        app:cardBackgroundColor="@color/white"
+                        app:cardCornerRadius="8dp">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <ImageView
+                                android:id="@+id/ivIconQuiz"
+                                android:layout_width="60dp"
+                                android:layout_height="60dp"
+                                android:layout_marginTop="8dp"
+                                android:src="@drawable/circle_background"
+                                app:layout_constraintEnd_toEndOf="@+id/iconQuiz"
+                                app:layout_constraintStart_toStartOf="@+id/iconQuiz"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <ImageView
+                                android:id="@+id/iconQuiz"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:layout_gravity="center"
+                                android:layout_margin="8dp"
+                                android:src="@drawable/icon_quiz"
+                                app:layout_constraintBottom_toBottomOf="@+id/ivIconQuiz"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="@+id/ivIconQuiz" />
+
+                            <TextView
+                                android:id="@+id/textQuiz"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/poppins_regular"
+                                android:text="@string/quiz"
+                                android:textAlignment="center"
+                                android:textColor="@color/dark_blue"
+                                android:textSize="12sp"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/ivIconQuiz" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </androidx.cardview.widget.CardView>
+
+                </LinearLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            <TextView
+                android:id="@+id/textNews"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_bold"
+                android:textSize="20sp"
+                android:textColor="@color/dark_blue"
+                android:layout_marginStart="27dp"
+                android:text="@string/news"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
+
+            <ProgressBar
+                android:id="@+id/progress_bar"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="@+id/rvNews"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/rvNews"
+                app:layout_constraintTop_toTopOf="@+id/rvNews" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvNews"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginBottom="64dp"
+                android:clipToPadding="false"
+                android:paddingTop="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textNews"
+                tools:listitem="@layout/card_news" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
