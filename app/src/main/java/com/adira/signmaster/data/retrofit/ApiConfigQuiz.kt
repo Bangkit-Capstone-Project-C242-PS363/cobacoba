@@ -4,7 +4,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 object ApiConfigQuiz {
-    private const val BASE_URL = "http://34.50.84.107/quiz/"
+    private const val BASE_URL = "https://signmaster-material-quiz-kji5w4ybbq-et.a.run.app/quiz/"
 
     val retrofit: ApiServiceQuiz by lazy {
         Retrofit.Builder()

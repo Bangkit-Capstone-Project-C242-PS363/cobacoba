@@ -18,6 +18,7 @@ import com.adira.signmaster.data.pref.dataStore
 import com.adira.signmaster.data.retrofit.ApiConfigAuth
 import com.adira.signmaster.databinding.FragmentProfileBinding
 import com.adira.signmaster.ui.login.LoginActivity
+import com.adira.signmaster.ui.profile.history_quiz.HistoryQuizActivity
 import com.adira.signmaster.ui.viewmodelfactory.ViewModelFactory
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import kotlinx.coroutines.flow.firstOrNull
@@ -77,6 +78,11 @@ class ProfileFragment : Fragment() {
         binding?.tvLogout?.setOnClickListener {
             showLogoutConfirmationDialog()
         }
+        binding?.FlHistory?.setOnClickListener {
+            val intent = Intent(requireContext(), HistoryQuizActivity::class.java)
+            startActivity(intent)
+        }
+
     }
 
     private fun handleSubscriptionChange(isSubscribed: Boolean) {

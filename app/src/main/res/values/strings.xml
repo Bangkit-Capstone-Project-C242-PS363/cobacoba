@@ -1,4 +1,5 @@
 <resources>
+    <string name="clear_history">Clear History</string>
     <string name="app_name">Sign Master</string>
     <string name="title_home">Home</string>
     <string name="title_profile">Profile</string>
@@ -54,4 +55,8 @@
     <string name="unknown_username">Unknown Username</string>
     <string name="unknown_email">Unknown Email</string>
     <string name="no_internet_connection">No Internet Connection</string>
+    <string name="history">History</string>
+    <string name="history_title">Quiz History</string>
+    <string name="history_deleted">History item deleted</string>
+    <string name="history_cleared">All history cleared</string>
 </resources>

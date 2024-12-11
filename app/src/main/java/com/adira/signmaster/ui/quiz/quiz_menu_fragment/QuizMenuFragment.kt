@@ -70,12 +70,14 @@ class QuizMenuFragment : Fragment() {
     companion object {
         private const val ARG_CHAPTER_ID = "chapter_id"
         private const val ARG_CHAPTER_TITLE = "chapter_title"
+        private const val ARG_ICON_URL = "icon_url"
 
-        fun newInstance(chapterId: Int, chapterTitle: String): QuizMenuFragment {
+        fun newInstance(chapterId: Int, chapterTitle: String, iconUrl: String): QuizMenuFragment {
             return QuizMenuFragment().apply {
                 arguments = Bundle().apply {
                     putInt(ARG_CHAPTER_ID, chapterId)
                     putString(ARG_CHAPTER_TITLE, chapterTitle)
+                    putString(ARG_ICON_URL, iconUrl)
                 }
             }
         }

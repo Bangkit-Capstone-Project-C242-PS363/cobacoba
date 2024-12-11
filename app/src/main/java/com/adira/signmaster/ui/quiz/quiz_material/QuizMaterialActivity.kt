@@ -12,8 +12,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.adira.signmaster.R
 import com.adira.signmaster.data.model.Quiz
-import com.adira.signmaster.data.pref.UserPreference
-import com.adira.signmaster.data.pref.dataStore
+import com.adira.signmaster.data.room.CompletedQuiz
+import com.adira.signmaster.data.room.database.QuizDatabase
 import com.adira.signmaster.databinding.ActivityQuizMaterialBinding
 import com.adira.signmaster.ui.quiz.QuizViewModel
 import com.adira.signmaster.ui.quiz.quiz_result.QuizResultFragment
@@ -28,11 +28,15 @@ class QuizMaterialActivity : AppCompatActivity() {
     private var quizList: List<Quiz> = emptyList()
     private var currentQuestionIndex = 0
     private var correctAnswersCount = 0
+    private lateinit var database: QuizDatabase
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityQuizMaterialBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        database = QuizDatabase.getDatabase(this)
 
         binding.toolbar.setNavigationOnClickListener {
             onBackPressed()
@@ -203,11 +207,17 @@ class QuizMaterialActivity : AppCompatActivity() {
         binding.btn4.visibility = View.GONE
         binding.fabRepeatQuiz.visibility = View.GONE
 
+        val iconUrl = intent.getStringExtra(EXTRA_ICON_URL) ?: ""
         val chapterId = intent.getIntExtra(EXTRA_CHAPTER_ID, -1)
+        val chapterTitle = intent.getStringExtra(EXTRA_CHAPTER_TITLE) ?: "Unknown"
 
         lifecycleScope.launch {
-            val pref = UserPreference.getInstance(applicationContext.dataStore)
-            pref.markChapterAsCompleted(chapterId)
+            val completedQuiz = CompletedQuiz(
+                id = chapterId,
+                title = chapterTitle,
+                iconUrl = iconUrl
+            )
+            database.completedQuizDao().insertCompletedQuiz(completedQuiz)
         }
 
         val fragment = QuizResultFragment.newInstance(quizList, correctAnswersCount)
@@ -226,6 +236,7 @@ class QuizMaterialActivity : AppCompatActivity() {
     companion object {
         const val EXTRA_CHAPTER_ID = "extra_chapter_id"
         const val EXTRA_CHAPTER_TITLE = "extra_chapter_title"
+        const val EXTRA_ICON_URL = "extra_icon_url"
     }
 
     override fun onBackPressed() {

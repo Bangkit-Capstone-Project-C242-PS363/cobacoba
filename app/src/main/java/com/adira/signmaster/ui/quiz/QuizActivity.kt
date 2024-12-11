@@ -21,7 +21,7 @@ class QuizActivity : AppCompatActivity() {
     private var _binding: ActivityQuizBinding? = null
     private val binding get() = _binding
     private val viewModel: QuizViewModel by viewModels()
-    private var isVip: Boolean = false // VIP status
+    private var isVip: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -62,11 +62,11 @@ class QuizActivity : AppCompatActivity() {
     }
 
     private fun setupRecyclerView() {
-        val adapter = ChapterAdapter(isVip) { chapterId, chapterTitle, isLocked ->
+        val adapter = ChapterAdapter(isVip) { chapterId, chapterTitle, iconUrl, isLocked ->
             if (isLocked && !isVip) {
                 showSubscriptionRequiredFragment()
             } else {
-                navigateToQuizMenu(chapterId, chapterTitle)
+                navigateToQuizMenu(chapterId, chapterTitle, iconUrl) // Pass iconUrl as an argument
             }
         }
 
@@ -100,8 +100,8 @@ class QuizActivity : AppCompatActivity() {
         }
     }
 
-    private fun navigateToQuizMenu(chapterId: Int, chapterTitle: String) {
-        val fragment = QuizMenuFragment.newInstance(chapterId, chapterTitle)
+    private fun navigateToQuizMenu(chapterId: Int, chapterTitle: String, iconUrl: String) {
+        val fragment = QuizMenuFragment.newInstance(chapterId, chapterTitle, iconUrl) // Pass iconUrl here
         supportFragmentManager.beginTransaction()
             .setCustomAnimations(R.anim.slide_in_right, R.anim.slide_out_left, R.anim.slide_in_left, R.anim.slide_out_right)
             .replace(R.id.main, fragment)

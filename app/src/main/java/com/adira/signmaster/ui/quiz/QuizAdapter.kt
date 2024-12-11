@@ -13,7 +13,7 @@ import com.bumptech.glide.Glide
 
 class ChapterAdapter(
     private val isVip: Boolean,
-    private val onClick: (Int, String, Boolean) -> Unit
+    private val onClick: (Int, String, String, Boolean) -> Unit // Add iconUrl in the onClick callback
 ) : RecyclerView.Adapter<ChapterAdapter.ChapterViewHolder>() {
 
     private val chapters = mutableListOf<Chapter>()
@@ -38,7 +38,7 @@ class ChapterAdapter(
 
     class ChapterViewHolder(
         itemView: View,
-        private val onClick: (Int, String, Boolean) -> Unit,
+        private val onClick: (Int, String, String, Boolean) -> Unit, // Update onClick with iconUrl
         private val isVip: Boolean
     ) : RecyclerView.ViewHolder(itemView) {
 
@@ -46,14 +46,13 @@ class ChapterAdapter(
         private val icon: ImageView = itemView.findViewById(R.id.ivIconQuizCard)
         private val lockIcon: ImageView = itemView.findViewById(R.id.ivLockIcon)
         private val background: ImageView = itemView.findViewById(R.id.ivCardBackground)
-        private val completedIndicator: TextView = itemView.findViewById(R.id.tvCompleted1)
-
 
         fun bind(chapter: Chapter) {
             title.text = chapter.title
+
             Glide.with(itemView.context)
                 .load(chapter.icon_url)
-                .placeholder(R.drawable.default_icon)
+                .placeholder(R.drawable.placeholder_image)
                 .error(R.drawable.error_icon)
                 .into(icon)
 
@@ -69,19 +68,14 @@ class ChapterAdapter(
                 background.alpha = 1.0f
             }
 
-            // Tampilkan indikator selesai jika quiz sudah selesai
-            if (chapter.isCompleted) {
-                completedIndicator.visibility = View.VISIBLE
-            } else {
-                completedIndicator.visibility = View.GONE
-            }
 
 
             itemView.setOnClickListener {
                 val animation = AnimationUtils.loadAnimation(itemView.context, R.anim.scale_animation)
                 itemView.startAnimation(animation)
-                onClick(chapter.id, chapter.title, isLocked)
+                onClick(chapter.id, chapter.title, chapter.icon_url, isLocked) // Pass iconUrl as part of onClick
             }
         }
     }
 }
+

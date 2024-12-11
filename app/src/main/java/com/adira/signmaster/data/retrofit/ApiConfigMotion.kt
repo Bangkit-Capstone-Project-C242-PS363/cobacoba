@@ -8,7 +8,7 @@ import java.util.concurrent.TimeUnit
 
 object ApiConfigMotion {
 
-    private const val BASE_URL = "http://34.50.84.107/"
+    private const val BASE_URL = "https://signmaster-tomotion-kji5w4ybbq-et.a.run.app/"
 
     fun getApiService(): ApiServiceMotion {
         // Tambahkan interceptor logging
